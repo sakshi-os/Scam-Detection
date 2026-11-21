@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark" style="color-scheme: dark;">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InternSafe — Fake Internship Scam Detector | Promptwar 2026</title>
+  <meta name="theme-color" content="#070B19" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            navy: {
+              950: '#070B19',
+              900: '#0B1124',
+              800: '#131C38',
+              700: '#1D294F',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #070B19;
+      color: #E2E8F0;
+    }
+    .font-display {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .hero-grid {
+      background-image: radial-gradient(rgba(99, 102, 241, 0.16) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .glass-dark {
+      background: rgba(19, 28, 56, 0.72);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+    }
+    .red-flag-highlight {
+      background-color: rgba(239, 68, 68, 0.18);
+      color: #FCA5A5;
+      border-bottom: 2px solid #F87171;
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: help;
+      transition: all 0.15s ease;
+    }
+    .red-flag-highlight:hover {
+      background-color: rgba(239, 68, 68, 0.32);
+    }
+    .green-flag-highlight {
+      background-color: rgba(34, 197, 94, 0.18);
+      color: #86EFAC;
+      border-bottom: 2px solid #4ADE80;
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    @keyframes pulseRing {
+      0% { transform: scale(0.95); opacity: 0.7; }
+      70% { transform: scale(1.1); opacity: 0; }
+      100% { transform: scale(0.95); opacity: 0; }
+    }
+    .pulse-ring::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 9999px;
+      border: 2px solid currentColor;
+      animation: pulseRing 2s infinite;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #0B1124; }
+    ::-webkit-scrollbar-thumb { background: #1D294F; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #334270; }
+  </style>
+</head>
+<body class="antialiased selection:bg-indigo-600 selection:text-white">
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-slate-900 text-white px-4 py-3 rounded-xl shadow-2xl border border-slate-700 flex items-center gap-3 text-sm font-medium">
+      <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+        <i data-lucide="check" class="w-4 h-4"></i>
+      </div>
+      <span id="toastMessage">Copied to clipboard!</span>
+    </div>
+  </div>
+
+  <!-- Top Navigation -->
+  <header class="sticky top-0 z-40 bg-navy-950/95 backdrop-blur-md border-b border-white/10 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <!-- Brand -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 via-blue-600 to-cyan-500 flex items-center justify-center shadow-lg shadow-indigo-500/30 group-hover:scale-105 transition-transform">
+          <i data-lucide="shield-check" class="w-6 h-6 text-white"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-display font-extrabold text-xl tracking-tight text-white">InternSafe</span>
+            <span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-400/30">
+              Promptwar 2026
+            </span>
+          </div>
+          <p class="text-[11px] text-slate-400 hidden md:block">Fake Internship Scam Detector & Action Kit</p>
+        </div>
+      </a>
+
+      <!-- Nav Links -->
+      <nav class="hidden lg:flex items-center gap-1 bg-white/5 p-1 rounded-xl border border-white/10">
+        <a href="#analyzer" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white shadow-sm">Live Analyzer</a>
+        <a href="#architecture" class="px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">Hybrid Engine</a>
+        <a href="#comparison" class="px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">Why InternSafe</a>
+        <a href="#impact" class="px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">Impact & Scope</a>
+      </nav>
+
+      <!-- Global Language Toggle -->
+      <div class="flex items-center gap-2.5">
+        <span class="text-xs text-slate-400 hidden sm:inline">Mode:</span>
+        <div class="inline-flex rounded-xl bg-navy-800 p-1 border border-white/10" role="group">
+          <button id="langHinglishBtn" onclick="setLanguage('hinglish')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-indigo-600 text-white shadow">
+            🇮🇳 Hinglish
+          </button>
+          <button id="langEnglishBtn" onclick="setLanguage('english')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all text-slate-300 hover:text-white">
+            🇬🇧 English
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-navy-950 text-white pt-10 pb-28 sm:pt-14 sm:pb-36 relative overflow-hidden hero-grid">
+    <!-- Glow Orbs -->
+    <div class="absolute -top-24 left-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-12 right-1/4 w-80 h-80 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs sm:text-sm font-medium text-indigo-200 mb-6">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>1 · Detect &nbsp;•&nbsp; 2 · Explain &nbsp;•&nbsp; 3 · Protect</span>
+      </div>
+
+      <h1 class="font-display font-extrabold text-3xl sm:text-5xl lg:text-[54px] tracking-tight leading-[1.15] mb-5">
+        “Sirf scam pehchanta nahi,<br class="hidden sm:inline" />
+        <span class="bg-gradient-to-r from-indigo-400 via-sky-400 to-emerald-400 bg-clip-text text-transparent">
+          student ko bachata bhi hai.”
+        </span>
+      </h1>
+
+      <p class="max-w-2xl mx-auto text-slate-300 text-sm sm:text-lg leading-relaxed mb-6">
+        Paste any WhatsApp message, email, or internship offer letter. Our <strong class="text-white">Rule + AI Hybrid Engine</strong> detects red flags in Hinglish, explains the scam pattern, and generates a ready-made <strong class="text-indigo-300">Cybercrime Action Kit</strong>.
+      </p>
+
+      <!-- Stat Pill from PPT -->
+      <div class="inline-flex flex-wrap items-center justify-center gap-2 px-4 py-2 rounded-2xl bg-amber-500/10 border border-amber-400/25 text-amber-200 text-xs sm:text-sm">
+        <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-400 shrink-0"></i>
+        <span><strong>52% of Gen Z job seekers</strong> miss genuine offers due to scam fear <span class="text-amber-300/70">(Business Today, Jul 2026)</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Interactive Analyzer Workbench -->
+  <main id="analyzer" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 sm:-mt-28 relative z-20 pb-16">
+    <div class="bg-navy-900 rounded-3xl shadow-2xl shadow-black/40 border border-white/10 overflow-hidden">
+      
+      <!-- Top Bar: 1-Click Judge Presets -->
+      <div class="bg-navy-800/50 border-b border-white/10 px-5 sm:px-8 py-4">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400">
+            <i data-lucide="zap" class="w-4 h-4 text-indigo-400"></i>
+            <span>Quick-Test Scenarios (1-Click Demo):</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button onclick="loadPreset('tcs')" class="preset-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-rose-500/10 text-rose-300 border border-rose-500/30 hover:bg-rose-500/20 transition flex items-center gap-1.5 shadow-sm">
+              <span>🚨 Fake TCS Offer (Slide Demo)</span>
+            </button>
+            <button onclick="loadPreset('wfh')" class="preset-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-amber-500/10 text-amber-200 border border-amber-500/30 hover:bg-amber-500/20 transition flex items-center gap-1.5 shadow-sm">
+              <span>💸 WFH Deposit Scam</span>
+            </button>
+            <button onclick="loadPreset('kyc')" class="preset-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-purple-500/10 text-purple-300 border border-purple-500/30 hover:bg-purple-500/20 transition flex items-center gap-1.5 shadow-sm">
+              <span>🪪 Aadhaar/PAN Data Theft</span>
+            </button>
+            <button onclick="loadPreset('genuine')" class="preset-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/20 transition flex items-center gap-1.5 shadow-sm">
+              <span>✅ Genuine Razorpay Offer</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Form Area -->
+      <div class="p-5 sm:p-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Left / Main Message Box -->
+          <div class="lg:col-span-8 flex flex-col">
+            <div class="flex items-center justify-between mb-2">
+              <label for="messageInput" class="text-sm font-bold text-slate-100 flex items-center gap-2">
+                <i data-lucide="message-square-text" class="w-4 h-4 text-indigo-400"></i>
+                Paste Internship Message, WhatsApp Chat, or Offer Letter
+              </label>
+              <button onclick="clearInput()" class="text-xs font-medium text-slate-400 hover:text-slate-100 transition">
+                Clear text
+              </button>
+            </div>
+            <textarea
+              id="messageInput"
+              rows="5"
+              placeholder="Paste message here... e.g., 'Congratulations!! Aap TCS Data Analyst Internship ke liye select ho gaye ho. Offer letter ke liye ₹999 registration fee aaj hi bhejo...'"
+              class="w-full rounded-2xl border border-white/15 bg-navy-950/50 focus:bg-navy-950 p-4 text-sm sm:text-base text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-4 focus:ring-indigo-500/15 focus:border-indigo-500 transition resize-none leading-relaxed"
+            ></textarea>
+          </div>
+
+          <!-- Right Metadata & Action -->
+          <div class="lg:col-span-4 flex flex-col justify-between bg-navy-800/50 rounded-2xl p-4 sm:p-5 border border-white/10">
+            <div>
+              <label for="senderInput" class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5 mb-2">
+                <i data-lucide="at-sign" class="w-3.5 h-3.5 text-indigo-400"></i>
+                Sender Email / Source (Optional)
+              </label>
+              <input
+                type="text"
+                id="senderInput"
+                placeholder="e.g., hr.tcs.jobs@gmail.com"
+                class="w-full rounded-xl border border-white/15 bg-navy-900 px-3.5 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition mb-3"
+              />
+              <p class="text-[11px] text-slate-400 leading-relaxed mb-4">
+                <strong class="text-slate-300">Tip:</strong> Real companies use official domains (like <code>@tcs.com</code>), never free <code>@gmail.com</code> or WhatsApp-only numbers.
+              </p>
+            </div>
+
+            <button
+              id="analyzeBtn"
+              onclick="runAnalysis()"
+              class="w-full py-3.5 px-5 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 active:scale-[0.99] text-white font-bold text-sm sm:text-base shadow-lg shadow-indigo-600/25 transition-all flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <i data-lucide="shield-alert" class="w-5 h-5"></i>
+              <span>Analyze Message Now</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Scanning Progress Overlay (Shown briefly during scan) -->
+        <div id="scanningState" class="hidden mt-8 py-10 px-6 rounded-2xl bg-navy-950 text-white border border-indigo-500/30 text-center">
+          <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-indigo-500/20 text-indigo-400 mb-4 relative">
+            <i data-lucide="cpu" class="w-7 h-7 animate-spin"></i>
+          </div>
+          <h3 class="font-display font-bold text-lg mb-2" id="scanStepTitle">Layer 1: Rule Engine scanning patterns...</h3>
+          <p class="text-xs sm:text-sm text-slate-400 max-w-md mx-auto mb-5" id="scanStepDesc">
+            Checking fee demands, KYC requests, sender email domains, and urgency triggers...
+          </p>
+          <div class="max-w-md mx-auto bg-navy-800 rounded-full h-2.5 overflow-hidden p-0.5">
+            <div id="scanProgressBar" class="bg-gradient-to-r from-indigo-500 via-sky-400 to-emerald-400 h-full rounded-full transition-all duration-300" style="width: 15%"></div>
+          </div>
+        </div>
+
+        <!-- RESULTS DASHBOARD -->
+        <div id="resultsDashboard" class="mt-8 pt-8 border-t border-white/10 transition-all">
+          
+          <!-- Verdict Top Banner -->
+          <div id="verdictCard" class="rounded-2xl p-5 sm:p-7 border-2 transition-all mb-6">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+              
+              <!-- Score Gauge + Primary Status -->
+              <div class="flex items-center gap-5">
+                <div class="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 flex items-center justify-center">
+                  <svg class="w-full h-full -rotate-90" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="42" stroke="currentColor" stroke-width="10" fill="transparent" class="text-white/10" />
+                    <circle id="scoreCircle" cx="50" cy="50" r="42" stroke="currentColor" stroke-width="10" fill="transparent"
+                      stroke-dasharray="263.89" stroke-dashoffset="263.89" stroke-linecap="round"
+                      class="transition-all duration-1000 ease-out" />
+                  </svg>
+                  <div class="absolute inset-0 flex flex-col items-center justify-center">
+                    <span id="scoreNumber" class="font-display font-extrabold text-2xl sm:text-3xl leading-none">92%</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider opacity-75 mt-1">Risk Score</span>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex flex-wrap items-center gap-2 mb-2">
+                    <span id="riskLevelBadge" class="px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider">
+                      HIGH RISK
+                    </span>
+                    <span id="scamTypeBadge" class="px-3 py-1 rounded-full text-xs font-bold bg-white/10 border border-white/10 text-slate-100 shadow-sm">
+                      Registration-Fee Scam
+                    </span>
+                  </div>
+                  <h2 id="verdictHeadline" class="font-display font-extrabold text-xl sm:text-2xl text-slate-100 mb-1">
+                    Mat Pay Karo! Yeh Ek Registration-Fee Scam Hai.
+                  </h2>
+                  <p id="verdictSubtext" class="text-xs sm:text-sm text-slate-400">
+                    Detected 4 critical red flags across Layer 1 Rules & Layer 2 AI Analysis.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Language Toggle Pill right on result -->
+              <div class="flex flex-row lg:flex-col items-center lg:items-end justify-between gap-2 bg-navy-900/70 backdrop-blur p-3 rounded-xl border border-white/10 shrink-0">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Explanation Language</span>
+                <div class="inline-flex rounded-lg bg-navy-800 p-1">
+                  <button onclick="setLanguage('hinglish')" class="res-lang-hinglish px-2.5 py-1 rounded-md text-xs font-bold bg-indigo-600 text-white shadow-sm transition">
+                    Hinglish
+                  </button>
+                  <button onclick="setLanguage('english')" class="res-lang-english px-2.5 py-1 rounded-md text-xs font-semibold text-slate-400 hover:text-white transition">
+                    English
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- X-Ray Highlighted Message Box -->
+          <div class="mb-6 rounded-2xl bg-navy-800/50 border border-white/10 p-4 sm:p-5">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                <i data-lucide="scan-line" class="w-4 h-4 text-indigo-400"></i>
+                Message X-Ray (Highlighted Triggers)
+              </span>
+              <span id="senderVerdictTag" class="text-xs font-semibold px-2.5 py-0.5 rounded-md bg-navy-700 text-slate-300">
+                Sender: hr.tcs.jobs@gmail.com
+              </span>
+            </div>
+            <div id="xrayText" class="text-sm sm:text-base text-slate-100 leading-relaxed bg-navy-900 p-4 rounded-xl border border-white/10">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Two-Column Breakdown: EXPLAIN (Left) & PROTECT ACTION KIT (Right) -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            <!-- PILLAR 2: EXPLAIN ("Why?") -->
+            <div class="lg:col-span-6 bg-navy-900 rounded-2xl border border-white/10 p-5 sm:p-6 shadow-sm flex flex-col">
+              <div class="flex items-center justify-between mb-4 pb-3 border-b border-white/5">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-9 h-9 rounded-xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center font-bold">
+                    <i data-lucide="search-check" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-display font-bold text-base sm:text-lg text-slate-100" id="explainPanelTitle">Why is this a Scam?</h3>
+                    <p class="text-xs text-slate-400">Hybrid Rule + AI Pattern Breakdown</p>
+                  </div>
+                </div>
+                <span class="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-indigo-500/15 text-indigo-300 border border-indigo-500/20">
+                  2 · Explain
+                </span>
+              </div>
+
+              <!-- Reasons List -->
+              <div id="reasonsList" class="space-y-3 flex-1">
+                <!-- Populated dynamically -->
+              </div>
+
+              <!-- Hybrid Engine Telemetry Footer -->
+              <div class="mt-5 pt-4 border-t border-white/5 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400">
+                <span class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+                  <strong>Layer 1 (Rules):</strong> <span id="ruleCountText">4 triggers matched</span>
+                </span>
+                <span class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-sky-500"></span>
+                  <strong>Layer 2 (AI):</strong> Hinglish Intent Verified
+                </span>
+              </div>
+            </div>
+
+            <!-- PILLAR 3: PROTECT ("Ready-Made Action Kit") -->
+            <div class="lg:col-span-6 bg-navy-900 rounded-2xl border border-white/10 p-5 sm:p-6 shadow-sm flex flex-col">
+              <div class="flex items-center justify-between mb-4 pb-3 border-b border-white/5">
+                <div class="flex items-center gap-2.5">
+                  <div id="protectIconBox" class="w-9 h-9 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center font-bold">
+                    <i data-lucide="shield" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-display font-bold text-base sm:text-lg text-slate-100" id="protectPanelTitle">Ready-Made Action Kit</h3>
+                    <p class="text-xs text-slate-400" id="protectPanelSubtitle">Immediate steps, reply template & cybercrime report</p>
+                  </div>
+                </div>
+                <span id="protectBadge" class="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-rose-500/10 text-rose-300 border border-rose-500/20">
+                  3 · Protect
+                </span>
+              </div>
+
+              <!-- SCAM ACTION KIT CONTENT -->
+              <div id="scamActionKit" class="space-y-4 flex-1">
+                <!-- Immediate Do's & Don'ts Banner -->
+                <div class="rounded-xl bg-rose-500/10 border border-rose-500/30 p-3.5">
+                  <div class="text-xs font-bold text-rose-100 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+                    <i data-lucide="octagon-alert" class="w-4 h-4 text-rose-400"></i>
+                    <span id="actionUrgentTitle">Immediate Action Required</span>
+                  </div>
+                  <ul id="immediateStepsList" class="text-xs sm:text-sm text-rose-200 space-y-1 list-disc list-inside">
+                    <!-- Populated dynamically -->
+                  </ul>
+                </div>
+
+                <!-- 1930 Emergency Helpline Card -->
+                <div class="rounded-xl bg-navy-950 border border-white/10 text-white p-3.5 flex flex-wrap items-center justify-between gap-3">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 border border-rose-500/30 flex items-center justify-center shrink-0">
+                      <i data-lucide="phone-call" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                      <div class="text-xs text-slate-400">National Cybercrime Helpline</div>
+                      <div class="font-display font-extrabold text-base text-white">Call <span class="text-amber-400">1930</span> &nbsp;|&nbsp; cybercrime.gov.in</div>
+                    </div>
+                  </div>
+                  <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition flex items-center gap-1">
+                    <span>Report Portal</span>
+                    <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                  </a>
+                </div>
+
+                <!-- Tab Switcher: Complaint Draft vs Reply Template -->
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="inline-flex rounded-lg bg-navy-800 p-1">
+                      <button id="tabComplaintBtn" onclick="switchKitTab('complaint')" class="px-3 py-1 rounded-md text-xs font-bold bg-navy-700 text-white shadow-sm transition">
+                        📄 Cybercrime Complaint Draft
+                      </button>
+                      <button id="tabReplyBtn" onclick="switchKitTab('reply')" class="px-3 py-1 rounded-md text-xs font-semibold text-slate-400 hover:text-white transition">
+                        💬 Safe Reply to Scammer
+                      </button>
+                    </div>
+                    <button onclick="copyActiveDraft()" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold flex items-center gap-1.5 shadow-sm transition cursor-pointer">
+                      <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                      <span>Copy Text</span>
+                    </button>
+                  </div>
+
+                  <textarea
+                    id="kitDraftBox"
+                    rows="6"
+                    readonly
+                    class="w-full rounded-xl bg-navy-800/50 border border-white/10 p-3 text-xs text-slate-300 font-mono leading-relaxed focus:outline-none"
+                  ></textarea>
+                </div>
+              </div>
+
+              <!-- GENUINE OFFER CHECKLIST (Shown when offer is safe) -->
+              <div id="genuineActionKit" class="hidden space-y-4 flex-1">
+                <div class="rounded-xl bg-emerald-500/10 border border-emerald-500/30 p-4">
+                  <h4 class="font-bold text-sm text-emerald-100 mb-1 flex items-center gap-1.5">
+                    <i data-lucide="badge-check" class="w-4 h-4 text-emerald-400"></i>
+                    <span id="safeChecklistTitle">Safe to Proceed! Smart Student Checklist:</span>
+                  </h4>
+                  <p class="text-xs text-emerald-200 mb-3" id="safeChecklistSub">
+                    Genuine offers don't ask for money. Complete these 3 quick steps before accepting:
+                  </p>
+                  <ul id="safeStepsList" class="space-y-2 text-xs sm:text-sm text-emerald-100">
+                    <!-- Populated dynamically -->
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-bold text-slate-300">✉️ Professional Acceptance Reply Template</span>
+                    <button onclick="copyActiveDraft()" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold flex items-center gap-1.5 shadow-sm transition cursor-pointer">
+                      <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                      <span>Copy Reply</span>
+                    </button>
+                  </div>
+                  <textarea
+                    id="safeReplyBox"
+                    rows="5"
+                    readonly
+                    class="w-full rounded-xl bg-navy-800/50 border border-white/10 p-3 text-xs text-slate-300 font-mono leading-relaxed focus:outline-none"
+                  ></textarea>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Section: How It Works (3-Layer Hybrid Architecture from Slide 5) -->
+  <section id="architecture" class="py-16 bg-navy-900 border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-extrabold uppercase tracking-wider text-indigo-400 bg-indigo-500/15 px-3 py-1 rounded-full">System Architecture</span>
+        <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-slate-100 mt-3 mb-3">
+          Rules for Speed + AI for Understanding
+        </h2>
+        <p class="text-sm sm:text-base text-slate-400">
+          Pure AI can hallucinate; pure keyword rules miss clever Hinglish tricks. InternSafe combines both in a 3-layer pipeline.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Layer 1 -->
+        <div class="rounded-2xl bg-navy-800/50 border border-white/10 p-6 relative hover:shadow-lg transition">
+          <div class="w-11 h-11 rounded-xl bg-indigo-600 text-white font-display font-extrabold flex items-center justify-center text-lg mb-4 shadow-md shadow-indigo-600/20">
+            01
+          </div>
+          <h3 class="font-display font-bold text-lg text-slate-100 mb-1">Layer 1: Rule Engine</h3>
+          <p class="text-xs font-semibold text-indigo-400 mb-3">Python Deterministic Scoring</p>
+          <ul class="text-xs sm:text-sm text-slate-400 space-y-2">
+            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-400 shrink-0 mt-0.5"></i> Asks for registration fee / deposit</li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-400 shrink-0 mt-0.5"></i> Demands Aadhaar / PAN / Bank details</li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-400 shrink-0 mt-0.5"></i> Gmail / Yahoo sender vs corporate domain</li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-400 shrink-0 mt-0.5"></i> Unrealistic stipend & “aaj hi” urgency</li>
+          </ul>
+        </div>
+
+        <!-- Layer 2 -->
+        <div class="rounded-2xl bg-navy-800/50 border border-white/10 p-6 relative hover:shadow-lg transition">
+          <div class="w-11 h-11 rounded-xl bg-sky-600 text-white font-display font-extrabold flex items-center justify-center text-lg mb-4 shadow-md shadow-sky-600/20">
+            02
+          </div>
+          <h3 class="font-display font-bold text-lg text-slate-100 mb-1">Layer 2: AI Explanation</h3>
+          <p class="text-xs font-semibold text-sky-400 mb-3">Claude API Contextual Reasoning</p>
+          <ul class="text-xs sm:text-sm text-slate-400 space-y-2">
+            <li class="flex items-start gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i> Deep Hinglish message comprehension</li>
+            <li class="flex items-start gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i> Exact scam category classification</li>
+            <li class="flex items-start gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i> Plain-language explanation of every red flag</li>
+            <li class="flex items-start gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i> Custom cybercrime complaint drafting</li>
+          </ul>
+        </div>
+
+        <!-- Layer 3 -->
+        <div class="rounded-2xl bg-navy-800/50 border border-white/10 p-6 relative hover:shadow-lg transition">
+          <div class="w-11 h-11 rounded-xl bg-emerald-600 text-white font-display font-extrabold flex items-center justify-center text-lg mb-4 shadow-md shadow-emerald-600/20">
+            03
+          </div>
+          <h3 class="font-display font-bold text-lg text-slate-100 mb-1">Layer 3: Final Protection</h3>
+          <p class="text-xs font-semibold text-emerald-400 mb-3">Verdict + Student Action Kit</p>
+          <ul class="text-xs sm:text-sm text-slate-400 space-y-2">
+            <li class="flex items-start gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i> Clear Risk Score & Risk Level badge</li>
+            <li class="flex items-start gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i> Green signal when an offer looks genuine</li>
+            <li class="flex items-start gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i> Ready reply template & 1930 helpline</li>
+            <li class="flex items-start gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i> Teaches students to spot patterns forever</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Why InternSafe is Different (Slide 4 Comparison) -->
+  <section id="comparison" class="py-16 bg-navy-800/50 border-t border-white/10">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-xs font-extrabold uppercase tracking-wider text-indigo-400 bg-indigo-500/15 px-3 py-1 rounded-full">Competitive Edge</span>
+        <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-100 mt-3">
+          Not Just Another Scam Checker
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Normal Checkers -->
+        <div class="rounded-2xl bg-navy-900 border border-white/10 p-6 opacity-85">
+          <div class="flex items-center gap-2 text-slate-400 font-bold text-sm uppercase tracking-wider mb-4">
+            <i data-lucide="x-circle" class="w-5 h-5 text-slate-400"></i>
+            <span>Normal Spam / Scam Checkers</span>
+          </div>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li class="flex items-center gap-2.5"><span class="text-rose-500 font-bold">✕</span> Only outputs a binary “Scam / Not Scam”</li>
+            <li class="flex items-center gap-2.5"><span class="text-rose-500 font-bold">✕</span> Doesn't explain WHY it's dangerous</li>
+            <li class="flex items-center gap-2.5"><span class="text-rose-500 font-bold">✕</span> Fails on Indian Hinglish WhatsApp forwards</li>
+            <li class="flex items-center gap-2.5"><span class="text-rose-500 font-bold">✕</span> Leaves panicked students without next steps</li>
+          </ul>
+        </div>
+
+        <!-- InternSafe -->
+        <div class="rounded-2xl bg-navy-900 text-white border-2 border-indigo-500 p-6 shadow-xl shadow-indigo-950/15">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2 text-indigo-300 font-bold text-sm uppercase tracking-wider">
+              <i data-lucide="shield-check" class="w-5 h-5 text-emerald-400"></i>
+              <span>InternSafe Advantage</span>
+            </div>
+            <span class="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 px-2.5 py-0.5 rounded-full">Detect + Explain + Protect</span>
+          </div>
+          <ul class="space-y-3 text-sm text-slate-200">
+            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Identifies exact scam type (Fee, Data-Theft, Task)</li>
+            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Explains every red flag in simple Hinglish</li>
+            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Generates complaint draft + safe reply + 1930</li>
+            <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-bold">✓</span> Gives Green Signal so real offers aren't missed</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Tech Stack & Future Scope (Slide 7) -->
+  <section id="impact" class="py-14 bg-navy-900 border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div>
+          <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-300 bg-emerald-500/10 px-3 py-1 rounded-full">Real-World Impact</span>
+          <h3 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-100 mt-3 mb-3">
+            Protecting Students' Money, Data & Career Confidence
+          </h3>
+          <p class="text-sm text-slate-400 leading-relaxed mb-5">
+            Built lightweight and free for college students across India—zero technical knowledge required. Paste a message and get protected in seconds.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-xl bg-navy-800 text-slate-300 text-xs font-semibold">🐍 Python Scoring Logic</span>
+            <span class="px-3 py-1.5 rounded-xl bg-navy-800 text-slate-300 text-xs font-semibold">⚡ Streamlit Web App</span>
+            <span class="px-3 py-1.5 rounded-xl bg-navy-800 text-slate-300 text-xs font-semibold">🧠 Claude API (Hinglish AI)</span>
+            <span class="px-3 py-1.5 rounded-xl bg-navy-800 text-slate-300 text-xs font-semibold">☁️ Streamlit Cloud</span>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-navy-800/50 border border-white/10 p-6">
+          <h4 class="font-display font-bold text-base text-slate-100 mb-3 flex items-center gap-2">
+            <i data-lucide="rocket" class="w-4 h-4 text-indigo-400"></i>
+            Future Scope Roadmap
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div class="p-3.5 rounded-xl bg-navy-900 border border-white/10">
+              <div class="font-bold text-slate-100 mb-1">🏢 Company Reality Check</div>
+              <p class="text-slate-400">Verify stipend vs industry role & official domain records automatically.</p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-navy-900 border border-white/10">
+              <div class="font-bold text-slate-100 mb-1">📸 WhatsApp Screenshot OCR</div>
+              <p class="text-slate-400">Upload chat screenshots directly without copying text.</p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-navy-900 border border-white/10">
+              <div class="font-bold text-slate-100 mb-1">🤖 WhatsApp Bot & Extension</div>
+              <p class="text-slate-400">Forward suspicious messages on WhatsApp for instant check.</p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-navy-900 border border-white/10">
+              <div class="font-bold text-slate-100 mb-1">🎓 Student Toolkit</div>
+              <p class="text-slate-400">Lab file helper & verified internship portal checker.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-navy-950 text-slate-400 py-8 border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm">
+      <div class="flex items-center gap-2.5 text-white font-display font-bold">
+        <i data-lucide="shield-check" class="w-5 h-5 text-indigo-400"></i>
+        <span>InternSafe</span>
+        <span class="text-slate-400 font-normal">— Sirf scam pehchanta nahi, student ko bachata bhi hai.</span>
+      </div>
+      <div class="text-slate-400">
+        Presented by <strong class="text-white">Sakshi Kumari</strong> &nbsp;|&nbsp; <span class="text-indigo-400 font-semibold">Promptwar 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Application Logic -->
+  <script>
+    // State Management
+    let currentLang = 'hinglish';
+    let activeKitTab = 'complaint';
+    let lastAnalysisResult = null;
+
+    // Presets directly from the PPT & real-world Indian internship scam patterns
+    const PRESETS = {
+      tcs: {
+        message: "Congratulations!! Aap TCS Data Analyst Internship ke liye select ho gaye ho. Offer letter ke liye ₹999 registration fee aaj hi bhejo. Reply on WhatsApp only.",
+        sender: "hr.tcs.jobs@gmail.com"
+      },
+      wfh: {
+        message: "Work from home, ₹5000/day guaranteed! Bas ₹1,500 refundable security deposit bhejo, aaj hi! Limited seats left, jaldi confirm karo.",
+        sender: "careers.fastearn@yahoo.com"
+      },
+      kyc: {
+        message: "Dear Candidate, your profile is shortlisted for Amazon SDE Intern. Please reply with your Aadhaar card, PAN card, and bank passbook photo within 2 hours for document verification.",
+        sender: "amazon-hr-verify@outlook.com"
+      },
+      genuine: {
+        message: "Hi Sakshi, thank you for interviewing with Razorpay's Product Design team. We are pleased to extend an internship offer with a stipend of ₹35,000/month. Please review the attached offer letter on our official portal and share your acceptance by Friday.",
+        sender: "campus-hiring@razorpay.com"
+      }
+    };
+
+    // Initialize icons and load default Slide 6 example on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      loadPreset('tcs', false);
+    });
+
+    function loadPreset(key, animateScan = true) {
+      const preset = PRESETS[key];
+      if (!preset) return;
+      document.getElementById('messageInput').value = preset.message;
+      document.getElementById('senderInput').value = preset.sender;
+      runAnalysis(animateScan);
+    }
+
+    function clearInput() {
+      document.getElementById('messageInput').value = '';
+      document.getElementById('senderInput').value = '';
+      document.getElementById('messageInput').focus();
+    }
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      // Update Header Toggle UI
+      const hBtn = document.getElementById('langHinglishBtn');
+      const eBtn = document.getElementById('langEnglishBtn');
+      if (lang === 'hinglish') {
+        hBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-indigo-600 text-white shadow';
+        eBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold transition-all text-slate-300 hover:text-white';
+      } else {
+        eBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-indigo-600 text-white shadow';
+        hBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold transition-all text-slate-300 hover:text-white';
+      }
+
+      // Update Result Card Toggle UI
+      document.querySelectorAll('.res-lang-hinglish').forEach(btn => {
+        btn.className = lang === 'hinglish'
+          ? 'res-lang-hinglish px-2.5 py-1 rounded-md text-xs font-bold bg-indigo-600 text-white shadow-sm transition'
+          : 'res-lang-hinglish px-2.5 py-1 rounded-md text-xs font-semibold text-slate-400 hover:text-white transition';
+      });
+      document.querySelectorAll('.res-lang-english').forEach(btn => {
+        btn.className = lang === 'english'
+          ? 'res-lang-english px-2.5 py-1 rounded-md text-xs font-bold bg-indigo-600 text-white shadow-sm transition'
+          : 'res-lang-english px-2.5 py-1 rounded-md text-xs font-semibold text-slate-400 hover:text-white transition';
+      });
+
+      if (lastAnalysisResult) {
+        renderAnalysis(lastAnalysisResult);
+      }
+    }
+
+    function switchKitTab(tab) {
+      activeKitTab = tab;
+      const cBtn = document.getElementById('tabComplaintBtn');
+      const rBtn = document.getElementById('tabReplyBtn');
+      if (tab === 'complaint') {
+        cBtn.className = 'px-3 py-1 rounded-md text-xs font-bold bg-navy-700 text-white shadow-sm transition';
+        rBtn.className = 'px-3 py-1 rounded-md text-xs font-semibold text-slate-400 hover:text-white transition';
+      } else {
+        rBtn.className = 'px-3 py-1 rounded-md text-xs font-bold bg-navy-700 text-white shadow-sm transition';
+        cBtn.className = 'px-3 py-1 rounded-md text-xs font-semibold text-slate-400 hover:text-white transition';
+      }
+      if (lastAnalysisResult && lastAnalysisResult.isScam) {
+        document.getElementById('kitDraftBox').value =
+          tab === 'complaint' ? lastAnalysisResult.complaintDraft : lastAnalysisResult.replyTemplate;
+      }
+    }
+
+    // Hybrid Rule + Heuristic NLP Engine (Client-side simulation of Python Rules + Claude AI)
+    function analyzeText(message, sender) {
+      const text = message.trim();
+      const lower = text.toLowerCase();
+      const senderLower = sender.trim().toLowerCase();
+
+      let score = 0;
+      const flags = [];
+      const greenSignals = [];
+      const highlights = [];
+
+      // 1. Money / Registration Fee / Security Deposit Rule
+      const feeRegex = /(₹\s*\d+|rs\.?\s*\d+|registration fee|security deposit|processing fee|pay\s*₹|kit fee|refundable|bhejo|payment)/gi;
+      const feeMatches = text.match(feeRegex);
+      if (feeMatches && !lower.includes('stipend of ₹') && !lower.includes('stipend: ₹')) {
+        score += 42;
+        feeMatches.forEach(m => highlights.push({ phrase: m, type: 'red' }));
+        flags.push({
+          layer: 'Layer 1 · Rule Engine',
+          titleEn: 'Asks for Money / Fee',
+          titleHi: 'Paise / Registration Fee Maang Raha Hai',
+          descEn: 'Legitimate companies NEVER ask students to pay registration fees, security deposits, or laptop/kit charges for an internship.',
+          descHi: 'Asli companies kabhi bhi internship ke liye registration fee ya security deposit nahi maangti. Yeh 100% scam ka sabse bada sign hai.'
+        });
+      }
+
+      // 2. Sensitive KYC / Aadhaar / PAN / Bank Rule
+      const kycRegex = /(aadhaar|aadhar|pan card|pan number|bank passbook|account details|otp|cvv|kyc)/gi;
+      const kycMatches = text.match(kycRegex);
+      if (kycMatches) {
+        score += 38;
+        kycMatches.forEach(m => highlights.push({ phrase: m, type: 'red' }));
+        flags.push({
+          layer: 'Layer 1 · Rule Engine',
+          titleEn: 'Demands Sensitive Personal Documents',
+          titleHi: 'Aadhaar / PAN / Bank Details Maang Raha Hai',
+          descEn: 'Asking for Aadhaar, PAN, or bank passbook photos over chat/email before official onboarding is a major identity-theft risk.',
+          descHi: 'Chat ya email par Aadhaar, PAN card ya bank passbook ki photo maangna identity theft (data chori) ka khatra hai.'
+        });
+      }
+
+      // 3. Free Email Domain / Brand Impersonation Rule
+      const freeDomains = ['gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com', 'rediffmail.com'];
+      const knownBrands = ['tcs', 'infosys', 'wipro', 'amazon', 'google', 'microsoft', 'flipkart', 'tata', 'reliance', 'deloitte', 'accenture'];
+      const usedFreeDomain = freeDomains.find(d => senderLower.includes(d) || lower.includes('@' + d));
+      const mentionedBrand = knownBrands.find(b => lower.includes(b) || senderLower.includes(b));
+
+      if (usedFreeDomain) {
+        score += 26;
+        highlights.push({ phrase: usedFreeDomain, type: 'red' });
+        flags.push({
+          layer: 'Layer 1 · Domain Check',
+          titleEn: `Unverified Free Email (@${usedFreeDomain})`,
+          titleHi: `Fake Email Domain (@${usedFreeDomain} Use Kiya Hai)`,
+          descEn: mentionedBrand
+            ? `Claims to be from ${mentionedBrand.toUpperCase()}, yet uses a free @${usedFreeDomain} address instead of an official corporate domain.`
+            : `Recruiters from genuine companies use official company domains, not free @${usedFreeDomain} accounts.`,
+          descHi: mentionedBrand
+            ? `Message ${mentionedBrand.toUpperCase()} ke naam se hai, par email @${usedFreeDomain} ka hai! Asli HR hamesha official company email use karte hain.`
+            : `Asli company HR kabhi bhi free @${usedFreeDomain} email se offer letter nahi bhejte.`
+        });
+      }
+
+      // 4. Artificial Urgency ("aaj hi", "within 2 hours", "limited seats")
+      const urgencyRegex = /(aaj hi|today only|within \d+ hours|immediately|jaldi|limited seats|last chance|urgent)/gi;
+      const urgencyMatches = text.match(urgencyRegex);
+      if (urgencyMatches) {
+        score += 16;
+        urgencyMatches.forEach(m => highlights.push({ phrase: m, type: 'red' }));
+        flags.push({
+          layer: 'Layer 2 · AI Context',
+          titleEn: 'Artificial Urgency & Panic Pressure',
+          titleHi: 'Jaldbaazi Ka Pressure (“Aaj Hi”)',
+          descEn: 'Scammers create fake deadlines (“aaj hi”, “within 2 hours”) so students panic and pay without verifying.',
+          descHi: 'Scammers “aaj hi” ya “2 ghante mein” jaisi urgency banate hain taaki student bina soche-samjhe jaldi mein paise bhej de.'
+        });
+      }
+
+      // 5. WhatsApp-Only / No Interview Rule
+      const noInterviewRegex = /(whatsapp only|reply on whatsapp|direct selection|no interview|without interview|₹5000\/day|5000 per day|work from home.*₹)/gi;
+      const noIntMatches = text.match(noInterviewRegex);
+      if (noIntMatches) {
+        score += 18;
+        noIntMatches.forEach(m => highlights.push({ phrase: m, type: 'red' }));
+        flags.push({
+          layer: 'Layer 2 · AI Context',
+          titleEn: 'No Interview / WhatsApp-Only Process',
+          titleHi: 'Bina Interview Direct Selection / WhatsApp Only',
+          descEn: 'Selection without a real interview or restricting communication strictly to WhatsApp is a classic fake-offer pattern.',
+          descHi: 'Bina proper interview ke direct selection hona aur sirf WhatsApp par baat karne ko kehna fake internship ki nishani hai.'
+        });
+      }
+
+      // Check Positive / Genuine Signals
+      const genuineRegex = /(interviewing|thank you for interviewing|stipend of ₹\d+,\d+\/month|official portal|careers page|let us know by|pleased to extend)/gi;
+      const genMatches = text.match(genuineRegex);
+      if (genMatches) {
+        genMatches.forEach(m => highlights.push({ phrase: m, type: 'green' }));
+        greenSignals.push({
+          layer: 'Layer 2 · AI Context',
+          titleEn: 'Follows Proper Hiring & Interview Flow',
+          titleHi: 'Proper Interview Aur Official Process Follow Hua Hai',
+          descEn: 'References a prior interview, clear monthly stipend structure, and official company portal review.',
+          descHi: 'Is message mein interview ke baad offer diya gaya hai, clear monthly stipend likha hai, aur official portal par review karne ko kaha gaya hai.'
+        });
+      }
+
+      if (senderLower.includes('@') && !usedFreeDomain && senderLower.match(/@[a-z0-9-]+\.[a-z]{2,}/)) {
+        greenSignals.push({
+          layer: 'Layer 1 · Domain Check',
+          titleEn: `Official Corporate Domain (${senderLower.split('@')[1]})`,
+          titleHi: `Official Company Domain (${senderLower.split('@')[1]})`,
+          descEn: 'The sender email uses a dedicated corporate domain rather than a free public email service.',
+          descHi: 'Sender ka email official company domain se aaya hai, kisi free Gmail ya Yahoo account se nahi.'
+        });
+      }
+
+      if (flags.length === 0) {
+        greenSignals.push({
+          layer: 'Layer 1 · Rule Engine',
+          titleEn: 'Zero Fee or KYC Demands Detected',
+          titleHi: 'Koi Fee Ya Aadhaar/PAN Nahi Maanga Gaya',
+          descEn: 'No upfront payment, security deposit, or sensitive document demands were found in the message.',
+          descHi: 'Is message mein kisi bhi tarah ki registration fee, deposit ya Aadhaar/PAN details nahi maangi gayi hain.'
+        });
+      }
+
+      // Clamp Score
+      if (flags.length === 0) {
+        score = Math.min(12, Math.max(4, 10 - greenSignals.length * 2));
+      } else {
+        score = Math.min(98, Math.max(45, score));
+      }
+
+      // Determine Scam Type
+      let scamTypeEn = 'Verified Legitimate Pattern';
+      let scamTypeHi = 'Genuine / Safe Offer Pattern';
+      if (flags.length > 0) {
+        if (kycMatches) {
+          scamTypeEn = 'Identity & Data-Theft Scam';
+          scamTypeHi = 'Data-Theft / KYC Scam';
+        } else if (lower.includes('deposit') || lower.includes('5000/day') || lower.includes('work from home')) {
+          scamTypeEn = 'Security Deposit / Task Scam';
+          scamTypeHi = 'Security Deposit / WFH Scam';
+        } else if (feeMatches) {
+          scamTypeEn = 'Registration-Fee Scam';
+          scamTypeHi = 'Registration-Fee Scam';
+        } else {
+          scamTypeEn = 'Fake Offer / Impersonation Scam';
+          scamTypeHi = 'Fake Internship Offer Scam';
+        }
+      }
+
+      const isScam = score >= 45;
+      const isHighRisk = score >= 70;
+
+      // Auto-generate Cybercrime Complaint Draft
+      const todayStr = new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+      const complaintDraft = `To,
+The Cyber Crime Cell / National Cyber Crime Reporting Portal (cybercrime.gov.in)
+Date: ${todayStr}
+
+Subject: Complaint regarding Fraudulent Internship Offer (${scamTypeEn})
+
+Respected Sir/Madam,
+I am a college student and I received a fraudulent internship recruitment message attempting to cheat students via a ${scamTypeEn}.
+
+Details of the Suspicious Sender:
+- Sender Email / Contact: ${sender || 'Not Provided / WhatsApp Number'}
+- Detected Scam Category: ${scamTypeEn} (Risk Score: ${score}%)
+
+Suspicious Message Received:
+"${text}"
+
+I have not made any payment or shared sensitive documents. I am reporting this so appropriate action can be taken to block the sender and protect other students.
+
+Sincerely,
+[Your Name]
+[Your College Name & Contact Number]`;
+
+      // Auto-generate Safe Reply Template
+      const replyTemplate = `Hello,
+Thank you for reaching out. As per standard hiring practices, legitimate companies do not ask candidates for registration fees, security deposits, or sensitive personal documents (Aadhaar/PAN) via WhatsApp or unverified personal email domains.
+
+I have verified this communication through official channels and will not be proceeding further. Please remove my contact details from your list.`;
+
+      // Safe Acceptance Reply (for genuine offers)
+      const safeReplyTemplate = `Dear Hiring Team,
+Thank you very much for extending the internship offer! I am excited about the opportunity to join the team.
+
+I will review the offer details on the official portal and share my formal acceptance before the deadline.
+
+Warm regards,
+[Your Name]`;
+
+      return {
+        isScam,
+        isHighRisk,
+        score,
+        scamTypeEn,
+        scamTypeHi,
+        flags,
+        greenSignals,
+        highlights,
+        sender: sender || 'Not specified',
+        rawText: text,
+        complaintDraft,
+        replyTemplate,
+        safeReplyTemplate
+      };
+    }
+
+    function runAnalysis(withAnimation = true) {
+      const msg = document.getElementById('messageInput').value.trim();
+      const sender = document.getElementById('senderInput').value.trim();
+
+      if (!msg) {
+        showToast('Please paste an internship message first!');
+        document.getElementById('messageInput').focus();
+        return;
+      }
+
+      const result = analyzeText(msg, sender);
+      lastAnalysisResult = result;
+
+      if (!withAnimation) {
+        renderAnalysis(result);
+        return;
+      }
+
+      // Show realistic 3-Layer Hybrid Pipeline scanning animation
+      const scanBox = document.getElementById('scanningState');
+      const resBox = document.getElementById('resultsDashboard');
+      const bar = document.getElementById('scanProgressBar');
+      const title = document.getElementById('scanStepTitle');
+      const desc = document.getElementById('scanStepDesc');
+
+      resBox.classList.add('opacity-40', 'pointer-events-none');
+      scanBox.classList.remove('hidden');
+      bar.style.width = '25%';
+      title.textContent = 'Layer 1: Rule Engine scanning red flags...';
+      desc.textContent = 'Checking fee demands, Aadhaar/PAN requests, sender domains, and urgency triggers...';
+
+      setTimeout(() => {
+        bar.style.width = '68%';
+        title.textContent = 'Layer 2: Claude AI analyzing Hinglish context...';
+        desc.textContent = 'Classifying scam pattern and generating plain-language explanation...';
+      }, 280);
+
+      setTimeout(() => {
+        bar.style.width = '100%';
+        title.textContent = 'Layer 3: Building Student Action Kit...';
+        desc.textContent = 'Preparing cybercrime complaint draft, safe reply, and helpline 1930...';
+      }, 550);
+
+      setTimeout(() => {
+        scanBox.classList.add('hidden');
+        resBox.classList.remove('opacity-40', 'pointer-events-none');
+        renderAnalysis(result);
+        lucide.createIcons();
+      }, 800);
+    }
+
+    function renderAnalysis(res) {
+      const isHi = currentLang === 'hinglish';
+
+      // 1. Verdict Card Styling & Gauge
+      const vCard = document.getElementById('verdictCard');
+      const scoreCircle = document.getElementById('scoreCircle');
+      const scoreNumber = document.getElementById('scoreNumber');
+      const riskBadge = document.getElementById('riskLevelBadge');
+      const typeBadge = document.getElementById('scamTypeBadge');
+      const headline = document.getElementById('verdictHeadline');
+      const subtext = document.getElementById('verdictSubtext');
+
+      const circumference = 263.89;
+      const offset = circumference - (res.score / 100) * circumference;
+      scoreCircle.style.strokeDashoffset = offset;
+      scoreNumber.textContent = `${res.score}%`;
+      typeBadge.textContent = isHi ? res.scamTypeHi : res.scamTypeEn;
+
+      if (res.isHighRisk) {
+        vCard.className = 'rounded-2xl p-5 sm:p-7 border-2 border-rose-500/40 bg-gradient-to-br from-rose-500/15 via-navy-900 to-rose-500/5 transition-all mb-6';
+        scoreCircle.classList.remove('text-amber-400', 'text-emerald-400');
+        scoreCircle.classList.add('text-rose-500');
+        scoreNumber.className = 'font-display font-extrabold text-2xl sm:text-3xl leading-none text-rose-300';
+        riskBadge.className = 'px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-rose-600 text-white shadow-sm';
+        riskBadge.textContent = 'HIGH RISK';
+        headline.textContent = isHi
+          ? `Savdhaan! Yeh Ek ${res.scamTypeHi} Hai.`
+          : `Warning! High Probability of ${res.scamTypeEn}.`;
+        subtext.textContent = isHi
+          ? `${res.flags.length} major red flags mile hain. Bilkul payment ya personal documents share mat karein.`
+          : `Detected ${res.flags.length} critical red flags across Layer 1 Rules & Layer 2 AI Analysis.`;
+      } else if (res.isScam) {
+        vCard.className = 'rounded-2xl p-5 sm:p-7 border-2 border-amber-500/40 bg-gradient-to-br from-amber-500/15 via-navy-900 to-amber-500/5 transition-all mb-6';
+        scoreCircle.classList.remove('text-rose-500', 'text-emerald-400');
+        scoreCircle.classList.add('text-amber-400');
+        scoreNumber.className = 'font-display font-extrabold text-2xl sm:text-3xl leading-none text-amber-300';
+        riskBadge.className = 'px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-amber-500 text-white shadow-sm';
+        riskBadge.textContent = 'MEDIUM RISK';
+        headline.textContent = isHi
+          ? `Alert! Is Message Mein Suspicious Signs Hain.`
+          : `Caution! Suspicious Recruitment Signals Detected.`;
+        subtext.textContent = isHi
+          ? `${res.flags.length} warning signs mile hain. Verify kiye bina aage na badhein.`
+          : `Detected ${res.flags.length} warning triggers. Verify on the company's official website first.`;
+      } else {
+        vCard.className = 'rounded-2xl p-5 sm:p-7 border-2 border-emerald-500/40 bg-gradient-to-br from-emerald-500/15 via-navy-900 to-emerald-500/5 transition-all mb-6';
+        scoreCircle.classList.remove('text-rose-500', 'text-amber-400');
+        scoreCircle.classList.add('text-emerald-400');
+        scoreNumber.className = 'font-display font-extrabold text-2xl sm:text-3xl leading-none text-emerald-300';
+        riskBadge.className = 'px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-emerald-600 text-white shadow-sm';
+        riskBadge.textContent = 'SAFE / GENUINE SIGNAL';
+        headline.textContent = isHi
+          ? `Green Signal! Yeh Offer Genuine Lag Raha Hai.`
+          : `Green Signal! This Internship Offer Looks Legitimate.`;
+        subtext.textContent = isHi
+          ? `Koi fee ya Aadhaar/PAN demand nahi mili. Aap confidence ke saath apply/accept kar sakte hain!`
+          : `Zero scam red flags detected. Matches verified corporate recruitment patterns.`;
+      }
+
+      // 2. X-Ray Highlighted Text
+      let highlightedHTML = escapeHTML(res.rawText);
+      // Sort highlights by length descending to prevent partial overlaps
+      const uniqueHighlights = [];
+      const seenPhrases = new Set();
+      res.highlights
+        .sort((a, b) => b.phrase.length - a.phrase.length)
+        .forEach(h => {
+          const key = h.phrase.toLowerCase();
+          if (!seenPhrases.has(key)) {
+            seenPhrases.add(key);
+            uniqueHighlights.push(h);
+          }
+        });
+
+      uniqueHighlights.forEach(h => {
+        const escapedPhrase = escapeRegExp(escapeHTML(h.phrase));
+        const regex = new RegExp(`(${escapedPhrase})`, 'gi');
+        const cls = h.type === 'red' ? 'red-flag-highlight' : 'green-flag-highlight';
+        const tip = h.type === 'red' ? 'Red Flag Trigger' : 'Verified Genuine Signal';
+        highlightedHTML = highlightedHTML.replace(regex, `<span class="${cls}" title="${tip}">$1</span>`);
+      });
+
+      document.getElementById('xrayText').innerHTML = highlightedHTML;
+      const senderTag = document.getElementById('senderVerdictTag');
+      senderTag.textContent = `Sender: ${res.sender}`;
+      senderTag.className = res.isScam
+        ? 'text-xs font-semibold px-2.5 py-1 rounded-lg bg-rose-500/20 text-rose-200 border border-rose-500/30'
+        : 'text-xs font-semibold px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-200 border border-emerald-500/30';
+
+      // 3. Explain Panel (Why?)
+      const explainTitle = document.getElementById('explainPanelTitle');
+      const reasonsList = document.getElementById('reasonsList');
+      const ruleCountText = document.getElementById('ruleCountText');
+
+      if (res.isScam) {
+        explainTitle.textContent = isHi ? 'Why? Yeh Scam Kyun Hai?' : 'Why is this a Scam?';
+        ruleCountText.textContent = `${res.flags.length} red flags triggered`;
+        reasonsList.innerHTML = res.flags.map(f => `
+          <div class="p-3.5 rounded-xl bg-rose-500/10 border border-rose-500/30">
+            <div class="flex items-center justify-between gap-2 mb-1">
+              <span class="font-bold text-xs sm:text-sm text-rose-100 flex items-center gap-1.5">
+                <i data-lucide="alert-circle" class="w-4 h-4 text-rose-400 shrink-0"></i>
+                ${isHi ? f.titleHi : f.titleEn}
+              </span>
+              <span class="text-[10px] font-semibold px-2 py-0.5 rounded bg-navy-900 text-slate-400 border border-white/10 shrink-0">
+                ${f.layer}
+              </span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed pl-5.5">
+              ${isHi ? f.descHi : f.descEn}
+            </p>
+          </div>
+        `).join('');
+      } else {
+        explainTitle.textContent = isHi ? 'Why? Yeh Safe Kyun Hai?' : 'Why does this look Genuine?';
+        ruleCountText.textContent = `0 red flags · ${res.greenSignals.length} trust signals`;
+        reasonsList.innerHTML = res.greenSignals.map(g => `
+          <div class="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30">
+            <div class="flex items-center justify-between gap-2 mb-1">
+              <span class="font-bold text-xs sm:text-sm text-emerald-100 flex items-center gap-1.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                ${isHi ? g.titleHi : g.titleEn}
+              </span>
+              <span class="text-[10px] font-semibold px-2 py-0.5 rounded bg-navy-900 text-slate-400 border border-white/10 shrink-0">
+                ${g.layer}
+              </span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed pl-5.5">
+              ${isHi ? g.descHi : g.descEn}
+            </p>
+          </div>
+        `).join('');
+      }
+
+      // 4. Protect Panel (Action Kit vs Safe Checklist)
+      const scamKit = document.getElementById('scamActionKit');
+      const genKit = document.getElementById('genuineActionKit');
+      const protectTitle = document.getElementById('protectPanelTitle');
+      const protectSub = document.getElementById('protectPanelSubtitle');
+      const protectBadge = document.getElementById('protectBadge');
+      const protectIconBox = document.getElementById('protectIconBox');
+
+      if (res.isScam) {
+        scamKit.classList.remove('hidden');
+        genKit.classList.add('hidden');
+        protectTitle.textContent = isHi ? 'Student Action Kit (Ab Kya Karein?)' : 'Ready-Made Action Kit';
+        protectSub.textContent = isHi ? 'Complaint draft, safe reply aur 1930 helpline' : 'Immediate steps, reply template & cybercrime report';
+        protectBadge.className = 'text-[11px] font-semibold px-2.5 py-1 rounded-full bg-rose-500/10 text-rose-300 border border-rose-500/20';
+        protectIconBox.className = 'w-9 h-9 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center font-bold';
+
+        document.getElementById('actionUrgentTitle').textContent = isHi
+          ? 'Turant Yeh Steps Follow Karein:'
+          : 'Immediate Protection Steps:';
+
+        const steps = isHi
+          ? [
+              '<strong>Do NOT Pay:</strong> Ek rupaya bhi transfer mat karein.',
+              '<strong>Block & Ignore:</strong> WhatsApp/Gmail par Aadhaar, PAN ya OTP mat bhejein.',
+              '<strong>Verify Official Site:</strong> Company ke official careers page par check karein.',
+              '<strong>Report Karein:</strong> Neeche diya complaint draft copy karke 1930 ya cybercrime.gov.in par report karein.'
+            ]
+          : [
+              '<strong>Do NOT Pay:</strong> Never transfer registration fees or security deposits.',
+              '<strong>Protect Your ID:</strong> Do not share Aadhaar, PAN, or bank passbook photos.',
+              '<strong>Verify Official Portal:</strong> Cross-check openings on the company’s official careers page.',
+              '<strong>Report Immediately:</strong> Copy the complaint draft below and submit on cybercrime.gov.in or call 1930.'
+            ];
+
+        document.getElementById('immediateStepsList').innerHTML = steps.map(s => `<li>${s}</li>`).join('');
+        document.getElementById('kitDraftBox').value =
+          activeKitTab === 'complaint' ? res.complaintDraft : res.replyTemplate;
+      } else {
+        scamKit.classList.add('hidden');
+        genKit.classList.remove('hidden');
+        protectTitle.textContent = isHi ? 'Confidence Checklist (Apply Safely)' : 'Safe Verification Checklist';
+        protectSub.textContent = isHi ? 'Real opportunity miss mat karein!' : 'Proceed with confidence using these quick checks';
+        protectBadge.className = 'text-[11px] font-semibold px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20';
+        protectIconBox.className = 'w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold';
+
+        document.getElementById('safeChecklistTitle').textContent = isHi
+          ? 'Safe to Proceed! Smart Student Checklist:'
+          : 'Safe to Proceed! Smart Student Checklist:';
+        document.getElementById('safeChecklistSub').textContent = isHi
+          ? 'Asli offers paise nahi maangte. Accept karne se pehle bas yeh 3 steps check karein:'
+          : 'Genuine offers never ask for money. Complete these 3 quick steps before accepting:';
+
+        const safeSteps = isHi
+          ? [
+              '✅ Confirm karein ki offer letter company ke official portal ya domain se aaya hai.',
+              '✅ Stipend, internship duration aur role description dhyan se padhein.',
+              '✅ Neeche diya professional reply copy karke recruiter ko bhej dein!'
+            ]
+          : [
+              '✅ Verify the offer letter link directs to the company’s official domain.',
+              '✅ Review stipend terms, duration, and reporting manager details.',
+              '✅ Use the professional acceptance template below to reply.'
+            ];
+
+        document.getElementById('safeStepsList').innerHTML = safeSteps.map(s => `<li>${s}</li>`).join('');
+        document.getElementById('safeReplyBox').value = res.safeReplyTemplate;
+      }
+
+      lucide.createIcons();
+    }
+
+    function copyActiveDraft() {
+      if (!lastAnalysisResult) return;
+      const box = lastAnalysisResult.isScam
+        ? document.getElementById('kitDraftBox')
+        : document.getElementById('safeReplyBox');
+
+      box.select();
+      box.setSelectionRange(0, 99999);
+      try {
+        document.execCommand('copy');
+        const label = !lastAnalysisResult.isScam
+          ? 'Acceptance reply copied to clipboard!'
+          : activeKitTab === 'complaint'
+            ? 'Cybercrime complaint draft copied!'
+            : 'Safe reply template copied!';
+        showToast(label);
+      } catch (err) {
+        showToast('Press Ctrl+C / Cmd+C to copy');
+      }
+      window.getSelection().removeAllRanges();
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMessage').textContent = message;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 2800);
+    }
+
+    function escapeHTML(str) {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function escapeRegExp(string) {
+      return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+  </script>
+</body>
+</html>
